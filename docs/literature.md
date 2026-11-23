@@ -51,16 +51,16 @@ Template:
 - For FAUnance: Supports our design: an early-warning, user-friendly tool integrated with existing software, with clear monitoring and intervention policies (= our decision-rights table) and variance graphs + tables in the UI.
 
 ### #8 Flyvbjerg, Holm & Buhl (2002)
-- What:
-- Found:
-- For FAUnance:
+- What: First statistically significant study of cost overruns, using 258 transport infrastructure projects (US$90bn, 20 countries, 1927–1998).
+- Found: Costs were underestimated in 86% of projects (average +28%), with no improvement over 70 years; the authors attribute this to strategic misrepresentation, not honest error, and call for more transparency and accountability.
+- For FAUnance: Cost overruns are a persistent, old problem, so early detection pays off; it also warns against "everything goes to plan" estimates, which supports showing best/worst-case ranges and traceable numbers.
 
 ## B — EBITDA critique
 
 ### #9 Bouwens, de Kok & Verriest (2019)
-- What:
-- Found:
-- For FAUnance:
+- What: Evaluates EBITDA as a performance measure and studies its use in 15,895 annual reports and 51,758 earnings releases of S&P 1500 firms (2005–2016).
+- Found: EBITDA is not defined in GAAP/IFRS, ignores working capital and is usually the highest number (paints a "rosy picture"); firms that emphasize it tend to be smaller, more leveraged, more capital-intensive and less profitable.
+- For FAUnance: We use EBITDA only as an internal project-control metric with one fixed definition (no adjustments), shown next to cash flow and working capital, never as the only number.
 
 ### #10 Rozenbaum (2019)
 - What:

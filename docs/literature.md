@@ -15,20 +15,20 @@ Template:
 
 ## A — Prior work
 
-### #1 Christensen (1998)
-- What:
-- Found:
-- For FAUnance:
+### #1 [Christensen (1998)](https://webharvest.gov/peth04/20041017072454/http://www.dau.mil/pubs/arq/98arq/chrisevm.pdf)
+- What: Empirical review of Earned Value Management (EVM) cost vs. benefit data across hundreds of defense and commercial acquisition projects.
+- Found: EVM administrative overhead accounts for only 1% to 2% of total contract cost, while reliably predicting final cost overrun within 10% accuracy as early as the 15%–20% completion mark (cumulative CPI almost never improves after 20%).
+- For FAUnance: Forms our primary empirical business case: software monitoring easily pays for itself by catching budget creep before the 20% point of no return.
 
-### #2 Anbari (2003)
-- What:
-- Found:
-- For FAUnance:
+### #2 [Anbari (2003)](https://doi.org/10.1177/875697280303400403)
+- What: Formal mathematical synthesis of EVM core parameters ($PV, EV, AC, CV, SV, CPI, SPI$) and proposed extensions for forecasting completion costs ($EAC$) and project duration.
+- Found: Traditional cost accounting cannot differentiate whether low spend reflects genuine savings or severe schedule delay; tracking Earned Value ($EV$) against Planned Value ($PV$) is mandatory to expose true cost performance.
+- For FAUnance: Provides the deterministic mathematical formulas implemented in our backend, which we fuse with EBITDA (Setyopurnomo 2025) to connect engineering progress to corporate profit.
 
-### #3 Kim, Wells & Duffey (2003)
-- What:
-- Found:
-- For FAUnance:
+### #3 [Kim, Wells & Duffey (2003)](https://doi.org/10.1016/S0263-7863(02)00049-2)
+- What: Evaluates empirical drivers of EVM implementation success and failure across multiple organization types, focusing on the friction between system complexity and user adoption.
+- Found: EVM fails in practice when field workers face excessive data entry friction, when the Work Breakdown Structure (WBS) is misaligned with daily tasks, and when tools feel like policing rather than decision support.
+- For FAUnance: Justifies our human-centric UX: why we replace rigid ERP forms with zero-friction mobile/WhatsApp OCR capture, automated bank webhooks, and management-by-exception alert gates.
 
 ### #4 Herroelen, Van Dommelen & Demeulemeester (1997)
 - What:

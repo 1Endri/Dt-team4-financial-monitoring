@@ -136,3 +136,25 @@ flowchart TB
   * **Anti-Disuse:** **Calibrated Confidence / Likelihood Alerts** (Best/Base/Worst-case EBITDA trajectories) rather than noisy binary warnings.
   * **Anti-Misuse:** Transparent **XAI Exception Narratives** linked directly to underlying EV/AC formulas and source records.
   * **Anti-Abuse:** **Mandatory Supervisor Sign-Off (HITL Gate)**—FAUnance flags exceptions and drafts narratives, but never autonomously alters budgets or approves invoices.
+
+  ## ⚡ Quick Paper Cards (At-a-Glance)
+
+### #11 Yigitbasioglu & Velcu (2012)
+- **What:** Multidisciplinary literature review of performance dashboards, visual perception, and Cognitive Fit Theory.
+- **Found:** Effective dashboards pair universal visual clarity (single screen, high data-ink ratio, frugal color) with interactive flexibility—graphs work best for trend/spatial tasks, tables for complex accounting tasks, and drill-down bridges KPIs to raw data.
+- **For FAUnance:** Defines our UI specification: uncluttered single-screen overview, interactive Chart ↔ Table toggle, and click-to-drill-down from Work Package EBITDA to site receipts and SAP POs.
+
+### #12 Vasarhelyi, Alles, & Kogan (2004)
+- **What:** Conceptual framework defining Continuous Assurance (CA) and an 8-component Monitoring & Control (MC) middleware layer over ERP systems.
+- **Found:** Real-time analytic monitoring—using continuity equations, data accuracy tagging, and dynamic reconciliation—shifts auditing from retrospective month-end checks to automated *audit-by-exception*, while keeping high-level judgments human-led.
+- **For FAUnance:** Grounds our Two-Speed Reconciliation Engine (`ESTIMATED` daily site logs vs. `CONFIRMED` SAP invoices) and exception-based margin alert gates.
+
+### #13 Parasuraman & Riley (1997)
+- **What:** Theoretical and empirical human-factors synthesis examining human-automation interaction across four modes: Use, Misuse, Disuse, and Abuse.
+- **Found:** High setup overhead blocks *Use*; opaque reliability breeds overreliance and automation bias (*Misuse*); low-base-rate false alarms cause alert fatigue (*Disuse*); removing human authority turns designer bugs into system failures (*Abuse*).
+- **For FAUnance:** Shapes our Human-in-the-Loop (HITL) governance: calibrated likelihood alerts (anti-Disuse), transparent formula lineage & XAI narratives (anti-Misuse), and mandatory supervisor sign-off gates (anti-Abuse).
+
+### #14 Raymond & Bergeron (2008)
+- **What:** Empirical PLS-SEM survey ($n=39$ project managers) testing how Project Management Information Systems (PMIS) affect managerial work and project success.
+- **Found:** Technical system quality ($\gamma=0.09$) and usage frequency ($\gamma=0.00$) have *no direct effect* on project success; success is driven indirectly through **Information Quality** ($\gamma=0.83$) improving managerial decisions ($\gamma=0.40 \rightarrow \gamma=0.84$).
+- **For FAUnance:** Justifies prioritizing deterministic, zero-hallucination accounting accuracy and timeliness over flashy features, while countering manual "bad news" reporting delays.

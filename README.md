@@ -70,3 +70,40 @@ Project managers regularly monitor budgets, actual costs, committed expenses, fo
 3. **Handle Uncertainty:** Flag data inconsistencies and anomalies rather than making speculative assumptions.
 4. **Enable Human Intervention (HITL):** Require interactive user review before reports or alerts are published.
 5. **Maintain Accountability:** Clearly distinguish autonomous alerts from human-gated financial decisions.
+
+
+
+## Theoretical Foundation & Literature Mapping
+
+The following peer-reviewed literature provides the theoretical, methodological, and architectural foundation for the Intelligent Financial Monitoring artifact:
+
+| Research Section | Academic Role / Section Focus | Selected Paper Reference |
+| :--- | :--- | :--- |
+| **Section 1: Research Methodology** | **Design Science Research (DSR) Framework** | Peffers, K., Tuunanen, T., Rothenberger, M. A., & Chatterjee, S. (2007). *A Design Science Research Methodology for Information Systems Research*. Journal of Management Information Systems, 24(3), 45–77. |
+| **Section 2: Domain Problem** | **Project Cost Control & Variance Detection** | Rozenes, S., Vitner, G., & Spraggett, S. (2006). *Project Control: Literature Review*. Project Management Journal, 37(4), 5–14. |
+| **Section 3: Data Architecture** | **Data Integration & Single Source of Truth** | Wixom, B. H., & Watson, H. J. (2001). *An Empirical Investigation of the Factors Affecting Data Warehouse Success*. MIS Quarterly, 25(1), 17–41. |
+| **Section 4: Artifact Design** | **Financial Dashboard & Human Oversight** | Yigitbasioglu, O. M., & Velcu, O. (2012). *A Review of Dashboards in Performance Management: Implications for Design and Research*. International Journal of Accounting Information Systems, 13(1), 41–59. |
+
+---
+
+### Abstract-Derived Summaries (Key Scientific Insights)
+
+#### 1. Peffers et al. (2007) – *Section: DSR Methodology*
+* Develops and validates a rigorous six-stage Design Science Research Methodology (DSRM) to guide information systems researchers in creating and evaluating successful IT artifacts.
+* Structures the research lifecycle systematically through problem identification, solution objectives, artifact design, demonstration, evaluation, and communication.
+* Provides our structural roadmap to iteratively develop our financial monitoring tool as a design artifact solving organizational reporting inefficiencies.
+
+#### 2. Rozenes et al. (2006) – *Section: Cost Control & Deviation Monitoring*
+* Synthesizes multidimensional project control literature, demonstrating that traditional monitoring methods create critical lags between planned baseline budgets and actual execution costs.
+* Emphasizes that proactive variance detection requires continuously integrating multidimensional data across costs, schedules, and resource commitments rather than relying on retrospective reports.
+* Establishes the theoretical justification for our automated monitoring rules to detect budget overruns and margin erosion at an early operational stage.
+
+#### 3. Wixom & Watson (2001) – *Section: Data Consolidation & Single Source of Truth*
+* Investigates the operational factors driving data integration success, proving that extracting disparate, cross-departmental data into a centralized model directly enables robust decision support.
+* Identifies data quality, standard schema mappings, and source system reconciliation as primary prerequisites for reliable business analytics.
+* Validates our approach of replacing manual, error-prone Excel and email data collection with an integrated data model fed directly from enterprise systems.
+
+#### 4. Yigitbasioglu & Velcu (2012) – *Section: Dashboard Visualization & Decision Support*
+* Reviews performance dashboard research, demonstrating that visual exception reporting and interactive display features significantly decrease managerial cognitive overload.
+* Finds that linking high-level visual alerts directly to drill-down transactional details enhances decision speed and analytical accuracy.
+* Informs our artifact design to balance automated variance detection with human-in-the-loop oversight, ensuring project managers can verify exceptions before making formal decisions.

@@ -1,19 +1,19 @@
-# FAUnance: Business Strategy, Valuation & Accounting Engine
-## Master Specification: FAU Business Strategy Foundations, DSR Architecture, and Literature Defense
+# FAUnance: Business Strategy & Deterministic Accounting Engine
+## Technical Specification: Operational Boundaries, EVM-to-EBITDA Fusion, and Two-Speed Reconciliation
 
-> **Lead Author & System Architect:** Shikhar Thakur  
-> **Course Alignment:** Designing Technology (57074) — WiSe 2026/27  
-> **Theoretical Grounding:** FAU Business Strategy (Prof. Dr. Harald Hungenberg, Chair of Strategic Management) & Chair Wi1 (Prof. Dr. Kathrin Möslein)  
+> **Lead Author & System Architect:** Shikhar Thakur (`shikharthakur2404`)  
+> **Course Alignment:** Designing Technology (57074) — WiSe 2026/27 (Chair Wi1, FAU)  
+> **Theoretical Grounding:** FAU Strategic Management (Prof. Dr. Harald Hungenberg) & DSR Methodology (Prof. Dr. Kathrin Möslein)  
 > **Target Artifact:** Case B — **FAUnance** (Intelligent Financial Monitoring)  
-> **File Location:** `DT/05_Project_Case_B/Shikhar_Business_Strategy_Formulas_FAUnance.md`  
-> **Local Reference Source:** `DT/06_Business_Strategy/Business Strategy_Handout_Winter_term_2425_SV.pdf`
+> **Repository Location:** `docs/business-strategy-engine.md`  
+> **Companion Document:** `docs/tool-design-architecture.md` (Hossein Hosseinpour)
 
 ---
 
 ## ⚡ Executive Brief for Teammates (Read This First)
 
 > [!NOTE] **What is this document?**  
-> This file is the **formal mathematical and technical specification** for FAUnance's backend engine. It serves as our theoretical foundation for the Midterm presentation, our conceptual data model, and the upcoming 20–30 page DSR seminar paper. You do not need to memorize every equation—use this as our shared accounting, valuation, and governance reference manual.
+> This file specifies the **deterministic accounting and financial mechanics** running inside FAUnance's backend engine. It defines how we link project-level work packages to corporate EBITDA targets, how we compute cost and schedule variances without AI hallucinations, and how our two-speed reconciliation connects daily site logs to official ERP invoices.
 
 ### The Analogy: Avionics Blueprint vs. Cockpit Dashboard
 * **The Dashboard UI:** What the project manager sees (progress bars, S-curves, status lights).
@@ -22,14 +22,14 @@
 
 ### The 3-Bullet Summary
 1. **The Deterministic Math Core (Zero Hallucination):**  
-   We do not allow probabilistic AI/LLMs to guess financial numbers. Project budgets, progress, and margins are calculated strictly via deterministic accounting math:  
-   $$\text{Cost Budget} = \text{Planned Revenue} - \text{Target EBITDA}$$  
-   $$\text{Actual EBITDA} = \text{Earned Value (EV)} - \text{Actual Cost (AC)}$$
+   We do not allow probabilistic AI/LLMs to guess financial figures. Project budgets, progress, and margins are calculated strictly via deterministic accounting math:  
+   $$\text{Cost Budget (BAC)} = \text{Planned Revenue} \times \left(1 - \frac{\text{Target EBITDA \%}}{100}\right)$$  
+   $$\text{Actual EBITDA}_t = \text{Earned Value (EV)}_t - \text{Actual Cost (AC)}_t$$
 2. **The Two-Speed Gearbox (Fast Daily vs. Slow Monthly):**  
-   * **Speed 1 (Daily Edge Telemetry):** Field teams log delivery receipts & worker hours on mobile $\rightarrow$ instant estimated burn rate ($AC_{\text{est}}$) to kill the 30-day ERP blind spot.  
+   * **Speed 1 (Daily Edge Telemetry):** Field teams log delivery slips & worker hours on mobile $\rightarrow$ instant estimated burn rate ($AC_{\text{est}}$) to eliminate the 30-day ERP blind spot.  
    * **Speed 2 (Month-End ERP Re-Engineering):** Official vendor invoices arrive in SAP $\rightarrow$ system auto-reconciles the delta ($\Delta$) against preliminary edge logs.
-3. **The Defensive Armor (Academic & Corporate Grounding):**  
-   Ties project tasks directly to corporate shareholder value (EVA, DCF, WACC from FAU Strategic Management) and anchors our governance rules in peer-reviewed literature (Bouwens 2019, Rozenbaum 2019, Jensen & Meckling 1976).
+3. **Strict Operational Boundary Control:**  
+   Project managers control **operational EBITDA and local cash conversion**. Corporate-level capital structure metrics (WACC, EVA, DCF) are kept at the executive level and documented as future strategic extensions (see [Appendix](#appendix-corporate-level-valuation--future-strategic-extensions)).
 
 ---
 
@@ -49,158 +49,136 @@ FAUnance enforces an uncompromising architectural boundary based on a **two-tier
 ├────────────────────────────────────────────────────────────────────────┤
 │ 1. DETERMINISTIC ACCOUNTING ENGINE (Back-End Core Ground Truth)        │
 │    • 100% exact mathematical formulas from FAU Corporate Strategy      │
-│    • EBITDA / EBIT / NOPAT operational boundary control                │
-│    • EVA (Economic Value Added) & Value Driver Tree (Slide 136)        │
-│    • DCF (Discounted Cash Flow) & MVA Shareholder Value (Slide 137–138)│
+│    • EBITDA operational boundary control & Target Cost Allocation      │
+│    • EVM-to-EBITDA variance fusion & Composite EAC Forecasting         │
+│    • Working Capital & Cash Conversion Cycle (CCC) tracking            │
 │    • Two-Speed Real-Time Site Burn vs. Month-End Re-Engineering Audit  │
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 2. Literature Defense: Shikhar's 3 Assigned Anchor Papers
+## 2. Literature Foundations: EVM Core & Strategic Controls
 
-These three verified papers from the team brief provide the academic foundation for our business strategy and governance rules:
+### 2.1 Primary Assigned Papers (Papers #1–#3)
 
-### Paper 1 (#9): The EBITDA Validity & Gaming Defense
-- **Citation:** Bouwens, J., de Kok, T., & Verriest, A. (2019). The prevalence and validity of EBITDA as a performance measure. *Comptabilité Contrôle Audit*, 25(1), 55–105.
-- **Key Finding:** EBITDA provides an excellent operational proxy by isolating core performance from financing distortions. However, viewed in isolation, it can mask capital intensity and liquidity strain.
-- **FAUnance Application:** Directly justifies why FAUnance benchmarks project teams **up to EBITDA**, but pairs it with **Cash Flow and Working Capital** to prevent managers from hiding equipment wear-and-tear.
+#### Paper #1: EVM Costs vs. Benefits
+* **Citation:** Christensen, D. S. (1998). The costs and benefits of the earned value management process. *Acquisition Review Quarterly*, 5, 373–386.
+* **Key Finding:** EVM implementation and maintenance overhead is estimated at **1% to 2%** of total contract value (p. 379). The "20% rule" demonstrates that cumulative CPI does not change by more than **0.10** from its value at the 20% completion point to contract completion across US Department of Defense acquisition contracts (pp. 377–381). *(Note: Later research notes limitations in generalizing defense contract stability to commercial environments).*
+* **FAUnance Application:** Forms our primary empirical business case: software monitoring overhead is modest relative to catching budget deviations before cost performance stabilizes past the 20% completion threshold.
 
-### Paper 2 (#10): Capital Allocation & Leverage Choices
-- **Citation:** Rozenbaum, O. (2019). EBITDA and managers' investment and leverage choices. *Contemporary Accounting Research*, 36(1), 513–546.
-- **Key Finding:** Managers evaluated solely on EBITDA tend to overinvest in debt-financed assets because interest and depreciation are excluded from their metrics.
-- **FAUnance Application:** Validates our strict **income statement control boundary**: project teams manage operational EBITDA, while executive boards and treasury monitor corporate EBIT, debt service, and WACC.
+#### Paper #2: Mathematical Foundation of EVM
+* **Citation:** Anbari, F. T. (2003). Earned value project management method and extensions. *Project Management Journal*, 34(4), 12–23.
+* **Key Finding:** Traditional accounting cannot detect whether low expenditure reflects genuine cost efficiency or severe schedule delay; tracking Earned Value ($EV$) against Planned Value ($PV$) is mandatory to evaluate true performance.
+* **FAUnance Application:** Provides the formal mathematical equations for $PV, EV, AC, CV, SV, CPI, SPI$, and composite $EAC$, which we fuse with EBITDA targets.
 
-### Paper 3 (#18): Agency Theory & Information Asymmetry
-- **Citation:** Jensen, M. C., & Meckling, W. H. (1976). Theory of the firm: Managerial behavior, agency costs and ownership structure. *Journal of Financial Economics*, 3(4), 305–360.
-- **Key Finding:** Information asymmetry between principals (executives) and agents (site managers) leads to moral hazard—site managers conceal cost overruns and delay reporting.
-- **FAUnance Application:** Resolves agency loss by replacing manual monthly reporting with **daily, tamper-evident site telemetry backed by mandatory supervisor sign-offs**.
-
----
-
-## 3. Mathematical Foundations: FAU Business Strategy Integration
-
-*(Directly mapped from Prof. Hungenberg's Business Strategy Handout, Winter Term 24/25)*
-
-```
-                       FAU BUSINESS STRATEGY VALUE ENGINE
-                                       │
-         ┌─────────────────────────────┼─────────────────────────────┐
-         ▼                             ▼                             ▼
-  OPERATIONAL MARGIN           CAPITAL EFFICIENCY            LIQUIDITY & TIMING
-  (EBITDA, EBIT, NOPAT)         (EVA, MVA, ROIC)             (DCF, CCC, NWC)
-  [Handout pp. 14-20]          [Handout pp. 135-137]         [Handout pp. 68, 138]
-```
+#### Paper #3: Implementation & Adoption Drivers
+* **Citation:** Kim, E., Wells, W. G., & Duffey, M. R. (2003). A model for effective implementation of Earned Value Management methodology. *International Journal of Project Management*, 21(5), 375–382.
+* **Key Finding:** EVM implementations struggle when data collection imposes excessive administrative burden on field teams, when the Work Breakdown Structure (WBS) is misaligned with daily site tasks, and when leadership fails to foster organizational buy-in.
+* **FAUnance Application:** Motivates keeping edge data collection lightweight, ensuring WBS work packages mirror operational site activities, and designing intuitive decision support rather than cumbersome administrative hurdles.
 
 ---
 
-### Layer 1: Operating Profitability & Cost Control
+### 2.2 Cross-Referenced Literature & Boundary Controls
+
+* **Paper #9 (Bouwens, de Kok & Verriest, 2019 — Assigned to Endri):**  
+  *Critique of EBITDA:* Bouwens et al. (pp. 55–57, 62–64) demonstrate that EBITDA is not GAAP/IFRS defined, ignores capital intensity and working capital, and frequently paints an overly favorable ("rosy") picture compared to standard operating profit (EBIT).  
+  *FAUnance Boundary:* We do **not** treat EBITDA as an unadjusted measure of overall corporate health. We use it strictly as an internal project-level operational control metric with a fixed, unadjusted definition, displayed alongside Cash Conversion Cycle and working capital.
+* **Paper #10 (Rozenbaum, 2019 — Assigned to Rhydham):**  
+  *Leverage & Overinvestment Risk:* Managers fixated solely on EBITDA tend to overinvest in debt-financed assets because interest and depreciation are excluded from their evaluations.  
+  *FAUnance Boundary:* Enforces our **income statement control boundary**: project managers manage operational EBITDA, while corporate treasury oversees debt service, WACC, and capital allocation.
+* **Paper #18 (Jensen & Meckling, 1976 — Agency Theory):**  
+  *Information Asymmetry & Moral Hazard:* Field agents possess private operational information and are incentivized to conceal cost overruns and defer bad news from corporate principals.  
+  *FAUnance Boundary:* Mitigates agency loss by replacing subjective monthly progress self-reporting with daily, auditable edge logs and supervisor sign-offs.
+
+---
+
+## 3. Mathematical Foundations: Operational Accounting Engine
+
+```
+                        FAUnance OPERATIONAL CONTROL ENGINE
+                                        │
+          ┌─────────────────────────────┴─────────────────────────────┐
+          ▼                                                           ▼
+   OPERATIONAL MARGIN                                         LIQUIDITY & TIMING
+ (Target Cost, EBITDA, EBIT)                                    (CCC, NWC, DPO/DSO)
+   [Handout pp. 14–20]                                        [Handout pp. 68, 138]
+```
+
+### 3.1 Operating Profitability & Margins
 
 #### 1. EBITDA (Operational Control Boundary)
 $$\text{EBITDA} = \text{Operating Revenue} - \text{Direct Labor} - \text{Direct Materials} - \text{Site Overhead}$$
-- **Strategic Role:** Measures operational cash generation before capital structure and depreciation policies.
-- **Software Rule:** Every Work Breakdown Structure (WBS) package has an assigned Target EBITDA margin.
+* **Strategic Role:** Measures operational cash generation before capital structure, tax, and depreciation policies.
+* **Software Rule:** Every Work Breakdown Structure (WBS) package has an assigned Target EBITDA margin.
 
-#### 2. EBIT & Operating Margin
+#### 2. Operating Profit (EBIT) & Margin Definitions
 $$\text{EBIT} = \text{EBITDA} - \text{Depreciation} - \text{Amortization}$$
-$$\text{Operating Margin (\%)} = \frac{\text{EBITDA}}{\text{Operating Revenue}} \times 100$$
-- **Alert Gate:** Any work package where $\text{Actual Margin} < \text{Target Margin} - 2.0\%$ triggers an immediate priority exception alert.
+$$\text{EBITDA Margin (\%)} = \frac{\text{EBITDA}}{\text{Operating Revenue}} \times 100$$
+$$\text{Operating Margin (\%)} = \frac{\text{EBIT}}{\text{Operating Revenue}} \times 100$$
+* **Alert Threshold:** Any work package where $\text{Actual EBITDA Margin} < \text{Target EBITDA Margin} - 2\text{ percentage points}$ triggers an immediate priority exception alert.
 
 #### 3. NOPAT (Net Operating Profit After Taxes)
 $$\text{NOPAT} = \text{EBIT} \times (1 - \text{Effective Tax Rate})$$
-- **Strategic Role:** Normalizes returns across multi-national projects under different tax jurisdictions.
+* **Strategic Role:** Normalizes operational performance across multi-national projects operating under differing tax jurisdictions.
 
 ---
 
-### Layer 2: Capital Efficiency & Economic Profit (FAU Strategy Slide 136–137)
+### 3.2 Liquidity & Net Working Capital (FAU Strategy Slide 68 & 138)
 
-#### 4. EVA (Economic Value Added) & The Value Driver Tree
-*(Handout Slide 136: EVA and Value Drivers)*
-$$\text{EVA} = \text{NOPAT} - (\text{Capital Employed} \times \text{WACC})$$
-
-```
-                            EVA (Economic Value Added)
-                                       │
-                  ┌────────────────────┴────────────────────┐
-                  ▼                                         ▼
-                NOPAT                               Cost of Capital
-                  │                                         │
-        ┌─────────┴─────────┐                     ┌─────────┴─────────┐
-        ▼                   ▼                     ▼                   ▼
-     Revenue              Costs                Capital             WACC
-   (Price, Vol)      (Efficiency)             Employed           (Financing)
-```
-
-- **Application to FAUnance:** Proves whether a project is creating or destroying shareholder value. If $\text{ROIC} < \text{WACC}$, accelerating project delivery destroys capital.
-
-#### 5. MVA (Market Value Added) & Firm Value
-*(Handout Slide 137: Economic Value Added and Shareholder Value)*
-$$\text{MVA} = \sum_{t=1}^{n} \frac{\text{EVA}_t}{(1 + \text{WACC})^t}$$
-$$\text{Total Project / Enterprise Value} = \text{Invested Capital} + \text{MVA}$$
-
----
-
-### Layer 3: Valuation, Timing & The "DCF Trap" (FAU Strategy Slide 68 & 138)
-
-#### 6. Discounted Cash Flow (DCF) Valuation
-*(Handout Slide 138: Calculation of Company & Equity Value)*
-$$\text{DCF Value} = \sum_{t=1}^{n} \frac{\text{Free Cash Flow}_t}{(1 + \text{WACC})^t} + \frac{\text{Continuing Value}_n}{(1 + \text{WACC})^n}$$
-$$\text{Equity Value} = \text{DCF Enterprise Value} - \text{Net Debt}$$
-
-#### 7. Avoiding the "DCF Trap" (Christensen, 2008 / Handout Slide 68)
-- **The Core Flaw in Traditional Finance:** Financial models typically compare an investment against an *assumed flat cash stream resulting from doing nothing*.
-- **The Reality:** Doing nothing causes rapid margin decay.
-- **Strategic Justification for FAUnance:** Implementing FAUnance prevents margin erosion. The value created is the delta between the degrading baseline and the protected margin.
-
-#### 8. Net Working Capital & Cash Conversion Cycle (CCC)
+#### 4. Net Working Capital & Cash Conversion Cycle (CCC)
 $$\text{NWC} = (\text{Work in Progress} + \text{Accounts Receivable}) - \text{Accounts Payable}$$
 $$\text{CCC} = \text{DIO} + \text{DSO} - \text{DPO}$$
-- **Strategic Rule:** Detects liquidity crunches. If $\text{DSO} - \text{DPO} > 45\text{ days}$, FAUnance warns management that supplier payables will drain cash reserves before client milestone revenue arrives.
+* $\text{DIO}$ = Days Inventory Outstanding (materials & WIP tied up on site).
+* $\text{DSO}$ = Days Sales Outstanding (client payment latency).
+* $\text{DPO}$ = Days Payables Outstanding (vendor invoice terms).
+* **Cash Shortage Guardrail (*Görög 2009*):** Even if a project is technically profitable on paper, if $\text{DSO} - \text{DPO} > 45\text{ days}$, FAUnance alerts management to a projected liquidity deficit before subcontractor payments drain working capital.
 
 ---
 
-### Layer 4: EVM-to-EBITDA Operational Variance Engine
+### 3.3 EVM-to-EBITDA Operational Variance Engine
 
-#### 9. Target Cost Allocation
-$$\text{Planned Cost (BAC)} = \text{Planned Revenue} - \text{Target EBITDA}$$
-- Example: $€1,000,000$ Revenue, $15\%$ Target Margin $\rightarrow \text{Cost Budget} = €850,000$.
+#### 5. Target Cost Allocation
+$$\text{Planned Cost (BAC)} = \text{Planned Revenue} \times \left(1 - \frac{\text{Target EBITDA \%}}{100}\right)$$
+* *Example:* Work package with $€1,000,000$ Planned Revenue and $15\%$ Target EBITDA $\rightarrow \text{BAC} = €850,000$.
 
-#### 10. Dynamic Real-Time EBITDA Variance
+#### 6. Dynamic Real-Time EBITDA Variance
 $$\text{Actual EBITDA}_t = \text{Earned Value (EV)}_t - \text{Actual Cost (AC)}_t$$
-$$\text{EBITDA Variance} = \text{Actual EBITDA}_t - \text{Target EBITDA}_t$$
+$$\text{EBITDA Variance}_t = \text{Actual EBITDA}_t - \text{Target EBITDA}_t$$
 
-#### 11. Multi-Factor Estimate at Completion (EAC)
-$$\text{CPI} = \frac{\text{EV}}{\text{AC}}, \quad \text{SPI} = \frac{\text{EV}}{\text{PV}}$$
-$$\text{EAC} = \frac{\text{BAC}}{\text{CPI} \times \text{SPI}}$$
+#### 7. Estimate at Completion (EAC) Forecasting
+* **Standard Cost-Efficiency Forecast:**
+  $$\text{EAC}_{\text{cost}} = \frac{\text{BAC}}{\text{CPI}} = \text{AC} + \frac{\text{BAC} - \text{EV}}{\text{CPI}}$$
+* **Composite Cost & Schedule Forecast (Anbari 2003):**
+  $$\text{EAC}_{\text{composite}} = \text{AC} + \frac{\text{BAC} - \text{EV}}{\text{CPI} \times \text{SPI}}$$
+  Where $\text{CPI} = \frac{\text{EV}}{\text{AC}}$ and $\text{SPI} = \frac{\text{EV}}{\text{PV}}$.
 
 ---
 
-### Layer 5: Organizational Learning & Sensitivity Control
+### 3.4 Production Learning & Risk Control
 
-#### 12. The Experience Curve Law (BCG / Handout Slide 41)
+#### 8. Experience Curve Law (BCG / Handout Slide 41)
 $$C_n = C_1 \times n^{-b}$$
-- Unit cost drops by $20\%–30\%$ with every doubling of cumulative volume.
-- **Application:** Captures the empirical finding from our 45-project PLOS ONE case study: as site engineers log data repeatedly over 11 months, logging accuracy rises and variance declines.
+* Unit costs decline predictably by 20%–30% with each doubling of cumulative output in repetitive fabrication (e.g., serial ship hull blocks or standardized piping assemblies).
 
-#### 13. Sensitivity Analysis for Risk Control (Handout Slide 135)
-- Evaluates deviations across:
-  - Product / Material Cost ($\pm 3\%, \pm 8\%$)
-  - Labor Productivity
-  - Client Payment Delays
-- Directly powers FAUnance's **Calibrated Confidence Score** (Best-Case, Base-Case, Worst-Case EBITDA trajectories).
+#### 9. Sensitivity Analysis for Risk Control (Handout Slide 135)
+* Evaluates financial impact under parameter shifts:
+  * Material Price Surge ($\pm 3\%, \pm 8\%$)
+  * Labor Rate / Overtime Variance ($\pm 5\%, \pm 12\%$)
+  * Milestone Certification Delay ($+15, +30\text{ days}$)
+* Directly feeds the **Calibrated Confidence Score** (Best-Case, Base-Case, Worst-Case EBITDA trajectories).
 
 ---
 
-## 4. Competitive Differentiation: Outperforming Team 3
+## 4. Architectural Differentiation: Deterministic Modeling vs. Black-Box AI
 
-| Feature | Team 3 (Likely Pitfall) | FAUnance (Our Winning Design) |
+| Dimension | Black-Box ML / Generic Approaches | FAUnance Deterministic Architecture |
 | :--- | :--- | :--- |
-| **Prediction Logic** | Black-box LLM / naive ML regression | **Deterministic FAU Strategy formulas + Two-Speed Reconciliation** |
-| **Data Integrity** | Unverified user inputs | **Mandatory frontline supervisor approval gates (PLOS ONE)** |
-| **Auditability** | Cannot explain where numbers came from | **Full source lineage back to ERP POs & timesheets** |
-| **Cash-Flow View** | Ignores working capital timing | **Integrated DCF, DSO/DPO, and milestone liquidity tracking** |
-| **EU AI Act Fit** | High regulatory risk (black-box decisions) | **100% compliant: transparent XAI with calibrated confidence** |
+| **Calculation Logic** | Statistical regression / LLM extrapolation | **Deterministic EVM & accounting math** (100% reproducible) |
+| **Data Provenance** | Unverified self-reported spreadsheets | **Traceable link to ERP POs & daily site receipts** |
+| **Cash-Flow View** | Ignores payment schedules and working capital | **Integrated Working Capital (CCC) and milestone liquidity tracking** |
+| **Governance & Trust** | Automated black-box budget adjustments | **Human-in-the-Loop:** Supervisor sign-off required for changes |
+| **Regulatory Alignment** | Unchecked AI automation risk | **Designed with EU AI Act High-Risk oversight principles in mind** |
 
 ---
 
@@ -213,7 +191,7 @@ $$C_n = C_1 \times n^{-b}$$
 │ • On-the-spot material delivery receipts & equipment hours logged.     │
 │ • System calculates: AC_estimated = Hours × Standard Rate + Receipts.  │
 │ • Daily supervisor signs off on task completion (EV).                  │
-│ • Status: Labelled "Estimated / Preliminary".                          │
+│ • Status: Labelled "ESTIMATED".                                        │
 └───────────────────────────────────┬────────────────────────────────────┘
                                     │ Automated Variance Match
 ┌───────────────────────────────────▼────────────────────────────────────┐
@@ -222,7 +200,7 @@ $$C_n = C_1 \times n^{-b}$$
 │ • Re-engineers delta: Δ = Invoiced Actuals − Estimated Edge Receipts.  │
 │ • Flags discrepancies (e.g. unbilled subcontractor surcharges).        │
 │ • Confirms final EBITDA numbers and updates future EAC projections.    │
-│ • Status: Labelled "Confirmed / Audited".                              │
+│ • Status: Labelled "CONFIRMED".                                        │
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -237,12 +215,11 @@ CREATE TABLE WorkPackage (
     project_id VARCHAR(50) NOT NULL,
     planned_revenue DECIMAL(15, 2) NOT NULL,
     target_ebitda_pct DECIMAL(5, 2) NOT NULL,  -- e.g. 15.00%
-    cost_budget DECIMAL(15, 2) NOT NULL,       -- planned_revenue * (1 - target_ebitda_pct)
-    planned_value DECIMAL(15, 2) NOT NULL,
-    wacc DECIMAL(5, 2) DEFAULT 11.20           -- FAU Strategy Handout p. 138 benchmark
+    cost_budget DECIMAL(15, 2) NOT NULL,       -- planned_revenue * (1 - target_ebitda_pct / 100.0)
+    planned_value DECIMAL(15, 2) NOT NULL
 );
 
--- Real-Time Site Transactions (Speed 1)
+-- Real-Time Site Transactions (Speed 1: Edge Telemetry)
 CREATE TABLE SiteTelemetry (
     telemetry_id VARCHAR(50) PRIMARY KEY,
     wp_id VARCHAR(50) REFERENCES WorkPackage(wp_id),
@@ -250,30 +227,50 @@ CREATE TABLE SiteTelemetry (
     hourly_rate DECIMAL(8, 2) NOT NULL,
     material_receipt_cost DECIMAL(12, 2) DEFAULT 0.00,
     earned_progress_pct DECIMAL(5, 2) NOT NULL,
-    supervisor_id VARCHAR(50) NOT NULL,
-    supervisor_signed_at TIMESTAMP NOT NULL,   -- Mandatory HITL gate
+    supervisor_id VARCHAR(50),                 -- Nullable at initial edge capture
+    supervisor_signed_at TIMESTAMP,            -- Populated upon supervisor approval gate
     status VARCHAR(20) DEFAULT 'ESTIMATED'
 );
 
--- Official Invoiced ERP Records (Speed 2)
+-- Official Invoiced ERP Records (Speed 2: Batch Reconciliation)
 CREATE TABLE ERPRecord (
     invoice_id VARCHAR(50) PRIMARY KEY,
     wp_id VARCHAR(50) REFERENCES WorkPackage(wp_id),
     booked_amount DECIMAL(15, 2) NOT NULL,
     payment_terms_days INT NOT NULL,           -- DPO calculation
-    reconciled_delta DECIMAL(12, 2) NOT NULL,  -- Invoiced - Estimated
-    reconciled_at TIMESTAMP NOT NULL,
+    reconciled_delta DECIMAL(12, 2),           -- Nullable until matched with edge slip
+    reconciled_at TIMESTAMP,                   -- Nullable until batch reconciliation
     status VARCHAR(20) DEFAULT 'CONFIRMED'
 );
 ```
 
 ---
 
-## 7. Executive Defense Script (For Mid-Term Presentation & Seminar Paper)
+## Appendix: Corporate-Level Valuation & Future Strategic Extensions
 
-When presenting or defending this architecture to Prof. Möslein and Joni:
+> [!NOTE] **Scope Demarcation**  
+> Operational project teams manage performance up to **EBITDA, EVM, and Working Capital**. The valuation metrics below operate at the corporate treasury/executive board level and represent strategic future extensions.
 
-> *"Our system does not rely on opaque AI guesses.  
-> Following the theoretical foundations of FAU Business Strategy (Prof. Hungenberg), we ground our engine in **deterministic valuation and accounting mathematics**: EVA value-driver decomposition, EBITDA operational boundaries, and DCF liquidity timing.*  
-> *We combine **real-time edge logging** from site workers with **month-end ERP invoice re-engineering**, creating a two-speed architecture that catches margin erosion weeks before traditional accounting close.*  
-> *The AI layer operates strictly as an **explainable decision-support co-pilot**—flagging calibrated variance exceptions while requiring human supervisor authorization for any budget adjustments."*
+### A.1 Capital Efficiency: EVA & Value Driver Tree (FAU Strategy Slide 136)
+$$\text{EVA} = \text{NOPAT} - (\text{Capital Employed} \times \text{WACC})$$
+
+```
+                            EVA (Economic Value Added)
+                                       │
+                  ┌────────────────────┴────────────────────┐
+                  ▼                                         ▼
+                NOPAT                               Cost of Capital
+                  │                                         │
+        ┌─────────┴─────────┐                     ┌─────────┴─────────┐
+        ▼                   ▼                     ▼                   ▼
+     Revenue              Costs                Capital             WACC
+   (Price, Vol)      (Efficiency)             Employed           (Financing)
+```
+* **Application:** Evaluates enterprise wealth creation. If project return on capital ($\text{ROIC}$) does not exceed the corporate hurdle rate ($\text{WACC}$), running the project destroys shareholder value.
+
+### A.2 Valuation & The "DCF Trap"
+* **Discounted Cash Flow (DCF) Formula (Slide 138):**
+  $$\text{DCF Value} = \sum_{t=1}^{n} \frac{\text{Free Cash Flow}_t}{(1 + \text{WACC})^t} + \frac{\text{Continuing Value}_n}{(1 + \text{WACC})^n}$$
+* **The "DCF Trap" (Clayton M. Christensen et al., 2008):**
+  * *Citation:* Christensen, C. M., Kaufman, S. P., & Shih, W. C. (2008). Innovation killers: How financial tools destroy your capacity to innovate. *Harvard Business Review*, 86(1), 98–105. *(Note: Authored by Clayton M. Christensen, distinct from David S. Christensen #1).*
+  * *Core Concept:* Standard DCF appraisals typically compare an investment against an *assumed static baseline of doing nothing*. In competitive markets, doing nothing leads to rapid margin erosion. FAUnance protects against the deteriorating baseline.

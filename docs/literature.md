@@ -16,9 +16,9 @@ Template:
 ## A — Prior work
 
 ### #1 [Christensen (1998)](https://webharvest.gov/peth04/20041017072454/http://www.dau.mil/pubs/arq/98arq/chrisevm.pdf)
-- What: Empirical review of Earned Value Management (EVM) cost vs. benefit data across hundreds of defense and commercial acquisition projects.
-- Found: EVM administrative overhead accounts for only 1% to 2% of total contract cost, while reliably predicting final cost overrun within 10% accuracy as early as the 15%–20% completion mark (cumulative CPI almost never improves after 20%).
-- For FAUnance: Forms our primary empirical business case: software monitoring easily pays for itself by catching budget creep before the 20% point of no return.
+- What: Empirical review of Earned Value Management (EVM) cost vs. benefit literature across US Department of Defense acquisition contracts.
+- Found: EVM implementation and maintenance overhead is estimated at 1% to 2% of total contract cost (p. 379). The "20% rule" shows that cumulative CPI does not change by more than 0.10 from its value at the 20% completion point to contract completion (pp. 377–381; note that this finding is drawn from defense contracts and later research notes limitations in generalizing to commercial contexts).
+- For FAUnance: Forms our primary empirical business case: continuous monitoring overhead is modest relative to early overrun detection before performance locks in past the 20% threshold.
 
 ### #2 [Anbari (2003)](https://doi.org/10.1177/875697280303400403)
 - What: Formal mathematical synthesis of EVM core parameters ($PV, EV, AC, CV, SV, CPI, SPI$) and proposed extensions for forecasting completion costs ($EAC$) and project duration.
@@ -26,9 +26,9 @@ Template:
 - For FAUnance: Provides the deterministic mathematical formulas implemented in our backend, which we fuse with EBITDA (Setyopurnomo 2025) to connect engineering progress to corporate profit.
 
 ### #3 [Kim, Wells & Duffey (2003)](https://doi.org/10.1016/S0263-7863(02)00049-2)
-- What: Evaluates empirical drivers of EVM implementation success and failure across multiple organization types, focusing on the friction between system complexity and user adoption.
-- Found: EVM fails in practice when field workers face excessive data entry friction, when the Work Breakdown Structure (WBS) is misaligned with daily tasks, and when tools feel like policing rather than decision support.
-- For FAUnance: Justifies our human-centric UX: why we replace rigid ERP forms with zero-friction mobile/WhatsApp OCR capture, automated bank webhooks, and management-by-exception alert gates.
+- What: Evaluates empirical drivers of EVM implementation success and failure across multiple organization types, focusing on system complexity, organizational environment, and user adoption.
+- Found: EVM implementation is hindered when data collection imposes excessive administrative burden, when the WBS is misaligned with operational project tasks, and when upper management fails to foster supportive organizational buy-in.
+- For FAUnance: Motivates keeping field data collection lightweight, ensuring WBS work packages align directly with operational site activities, and providing intuitive decision support to encourage user adoption.
 
 ### #4 Herroelen, Van Dommelen & Demeulemeester (1997)
 - What:

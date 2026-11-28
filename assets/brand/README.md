@@ -11,8 +11,10 @@ Official brand assets for **FAUnance** — Intelligent Financial Monitoring for 
 ```
 assets/brand/
 ├── FAUnance/           → Team project logos (use these in slides, UI, paper)
+├── templates/          → Official FAU WiSo 16:9 PowerPoint master template
 └── FAU_Official/
-    ├── ReWi/           → FAU ReWi / Wirtschaftswissenschaften faculty logos
+    ├── WiSo/           → Official FAU School of Business, Economics and Society (WiSo) logos
+    ├── ReWi/           → FAU ReWi faculty-level lockups
     └── (root)          → FAU wordmarks, WiSo lockup, Wi1 chair logos
 ```
 
@@ -45,7 +47,12 @@ assets/brand/
 | `Wi1_Chair_Logo_Official_HighRes.png` | Standalone chair badge |
 | `Wi1_Official_Footer_Banner_HighRes.png` | Slide footer attribution bar |
 | `ReWi/FAU_ReWi_H_CMYK_blue.jpg` | Faculty-level horizontal lockup |
-| `ReWi/FAU_FB_Recht_H_RGB_white.png` | White variant for dark backgrounds |
+| `WiSo/FAU_FB_WiSo_Q_RGB_blue.svg` | ✅ Official WiSo landscape vector (blue) |
+| `WiSo/FAU_FB_WiSo_H_RGB_blue.svg` | Official WiSo portrait vector (blue) |
+| `WiSo/FAU_FB_WiSo_EN_Q_RGB_black.png` | Official WiSo English landscape PNG |
+| `WiSo/FAU_FB_WiSo_EN_Q_PMS_blue.pdf` | Official WiSo English landscape vector PDF |
+| `WiSo/FAU_FB_WiSo_H_black.jpg` | Official WiSo portrait JPG |
+| `templates/PP-Master-FAU_WiSo_16zu9_v2.pptx` | ✅ Official FAU WiSo 16:9 PowerPoint master (Arial) |
 
 ---
 

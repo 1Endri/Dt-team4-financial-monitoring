@@ -63,9 +63,9 @@ Template:
 - For FAUnance: We use EBITDA only as an internal project-control metric with one fixed definition (no adjustments), shown next to cash flow and working capital, never as the only number.
 
 ### #10 Rozenbaum (2019)
-- What:
-- Found:
-- For FAUnance:
+- What: Examines whether managers' focus on EBITDA, proxied by EBITDA disclosure in earnings announcements, is associated with capital overinvestment and excessive leverage.
+- Found: Managers focused on EBITDA invest 0.4–1.5 percentage points of total assets more than industry peers; capital investment is 46% higher than in a matched sample. Their firms also show higher interest expense and leverage, while tax avoidance is not significantly different. The author notes that endogeneity cannot be fully ruled out.
+- For FAUnance: - EBITDA can create incentives to overlook capital and financing costs. Use it as one internal project-control indicator, not as a standalone success measure; complement it with cash flow, investment costs and human review.
 
 ## C — Tool design
 
